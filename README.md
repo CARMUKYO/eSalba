@@ -51,6 +51,7 @@ The system architecture will consist of the following components:
 - **Version Control:** Git and GitHub for version control and collaboration.
 
 ## Feature Development Checklist
+- [✔] UI DESIGN
 - [ ] User registration and authentication.
 - [ ] Issue reporting with descriptions, photos, and geolocation tagging.
 - [ ] Interactive map visualization of environmental issues.
