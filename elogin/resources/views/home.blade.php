@@ -14,36 +14,36 @@
     }
     .hero-section {
         display: flex;
-        align-items: center; /* Center vertically */
-        justify-content: space-between; /* Space out elements */
-        height: 100vh; /* Full viewport height */
-        padding: 0 5%; /* Add some horizontal padding */
+        align-items: center; 
+        justify-content: space-between; 
+        height: 100vh; 
+        padding: 0 5%; 
     }
     .hero-text {
-        max-width: 600px; /* Limit width of text */
+        max-width: 600px; 
     }
     .hero-text h1 {
-        font-size: 4rem; /* Increase font size for heading */
-        font-weight: bold; /* Make heading bold */
+        font-size: 4rem; 
+        font-weight: bold; 
     }
     .hero-text p {
-        font-size: 1.5rem; /* Font size for paragraph */
-        margin-bottom: 30px; /* Space below paragraph */
+        font-size: 1.5rem;
+        margin-bottom: 30px; 
     }
     .btn-custom {
-        background-color: #A0DB43; /* Button background color */
-        color: white; /* Button text color */
-        padding: 10px 30px; /* Button padding */
-        border: none; /* Remove border */
-        border-radius: 5px; /* Rounded corners */
-        font-size: 1.25rem; /* Button font size */
+        background-color: #A0DB43; 
+        color: white; 
+        padding: 10px 30px; 
+        border: none; 
+        border-radius: 5px; 
+        font-size: 1.25rem; 
     }
     .btn-custom:hover {
-        background-color: #8cdb3d; /* Darker shade on hover */
+        background-color: #8cdb3d; 
     }
     .hero-image {
-        max-width: 50%; /* Limit image width */
-        height: auto; /* Maintain aspect ratio */
+        max-width: 50%;
+        height: auto; 
     }
 </style>
 </head>
@@ -61,11 +61,6 @@
     <img src="https://via.placeholder.com/400" alt="Recent Reports" class="hero-image"> 
 </div>
 
-<div class="container mt-5">
-    <h2>MOST RECENT REPORTS</h2>
-    <img src="https://via.placeholder.com/600" alt="Most Recent Reports" class="img-fluid"> <!-- Placeholder for recent reports -->
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
 

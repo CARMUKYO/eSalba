@@ -23,6 +23,9 @@
                         <a class="nav-link" href="{{ url('/reports') }}">Reports</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('issue_reports.index') }}">Current Reports</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('/community') }}">Community</a>
                     </li>
                     <li class="nav-item">

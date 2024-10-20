@@ -2,37 +2,41 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IssueReportController;
 
-// This route requires authentication
 Route::get('/', function () {
-    return view('home'); // Replace this with your actual home view
-})->middleware(['auth']); // <-- Add auth middleware here
+    return view('home');
+})->middleware(['auth'])->name('home'); 
 
 Route::get('/dashboard', function () {
-    return view('dashboard'); // This route also requires authentication
+    return view('dashboard'); 
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/about-us', function () {
-    return view('about-us'); // Make sure to create a view file at resources/views/about-us.blade.php
+    return view('about-us'); 
 })->name('about');
 
 Route::get('/reports', function () {
-    return view('reports'); // Make sure to create a view file at resources/views/reports.blade.php
-})->name('reports');
-
-Route::get('/community', function () {
-    return view('community'); // Make sure to create a view file at resources/views/community.blade.php
-})->name('community');
-
-Route::get('/contact-us', function () {
-    return view('contact-us'); // Make sure to create a view file resources/views/contact-us.blade.php
-})->name('contact');
+    return view('issueReports/reports'); 
+})->name('report-issue'); 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/issue-reports', [IssueReportController::class, 'index'])->name('issue_reports.index');
+    Route::get('/issue-reports/create', [IssueReportController::class, 'create'])->name('issue_reports.create');
+    Route::post('/issue-reports', [IssueReportController::class, 'store'])->name('issue_reports.store');
 });
+
+Route::get('/community', function () {
+    return view('community'); 
+})->name('community');
+
+Route::get('/contact-us', function () {
+    return view('contact-us'); 
+})->name('contact');
 
 // Include the authentication routes
 require __DIR__.'/auth.php';
