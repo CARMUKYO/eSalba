@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-bg {
+    background-color: #A0DB43 !important; /* Custom background color */
+    height: 100vh; /* Ensures it takes full height of the viewport */
+}
