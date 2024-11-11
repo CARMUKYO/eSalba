@@ -12,10 +12,6 @@ Route::get('/dashboard', function () {
     return view('dashboard'); 
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/about-us', function () {
-    return view('about-us'); 
-})->name('about');
-
 Route::get('/reports', function () {
     return view('issueReports/reports'); 
 })->name('report-issue'); 
@@ -37,6 +33,8 @@ Route::get('/community', function () {
 Route::get('/contact-us', function () {
     return view('contact-us'); 
 })->name('contact');
+
+Route::get('/map', [IssueReportController::class, 'map'])->name('issue_reports.map');
 
 // Include the authentication routes
 require __DIR__.'/auth.php';

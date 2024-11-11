@@ -58,4 +58,11 @@ class IssueReportController extends Controller
 
         return redirect()->route('issue_reports.index')->with('success', 'Issue report submitted successfully.');
     }
+
+    public function map()
+    {
+        $issueReports = IssueReport::select('id', 'title', 'description', 'latitude', 'longitude', 'photo_path')
+            ->get(); // Fetch all issues with necessary fields
+        return view('issueReports.map', compact('issueReports'));
+    }
 }
