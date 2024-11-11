@@ -53,8 +53,8 @@ The system architecture will consist of the following components:
 ## Feature Development Checklist
 - [✔] UI DESIGN
 - [✔] User registration and authentication.
-- [↻] Issue reporting with descriptions, photos, and geolocation tagging.
-- [ ] Interactive map visualization of environmental issues.
+- [✔] Issue reporting with descriptions, photos, and geolocation tagging.
+- [✔] Interactive map visualization of environmental issues.
 - [ ] Commenting system for community discussions.
 - [ ] Basic notifications for new reports and comments.
 
