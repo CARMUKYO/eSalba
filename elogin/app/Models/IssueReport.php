@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class IssueReport extends Model
 {
     protected $fillable = [
-        'user_id', 'title', 'description', 'photo_path', 'latitude', 'longitude',
+        'user_id', 'title', 'description', 'photo_path', 'latitude', 'longitude', 'status'
     ];
 
     public function user()

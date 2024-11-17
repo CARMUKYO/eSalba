@@ -14,7 +14,7 @@
     </style>
 </head>
 
-<div class="container mt-5">
+<div class="container mt-4">
     <h1>Report an Issue</h1>
 
     @if($errors->any())
@@ -71,7 +71,7 @@
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    let marker; // Define a marker variable outside to reuse it
+    let marker; 
 
     // Function to add a marker when clicking on the map
     map.on('click', function(e) {
@@ -89,7 +89,7 @@
         }
     });
 
-    // Optional: Get user's current location and set map view there
+    // Get user's current location and set map view there
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
             const { latitude, longitude } = position.coords;

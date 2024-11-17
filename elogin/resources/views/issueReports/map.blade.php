@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<div class="container mt-5">
+<div class="container mt-4">
     <h1>INTERACTIVE ISSUE MAP</h1>
     <div id="map"></div>
 </div>
