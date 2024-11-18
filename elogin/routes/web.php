@@ -6,7 +6,7 @@ use App\Http\Controllers\IssueReportController;
 
 Route::get('/', function () {
     return view('home');
-})->middleware(['auth'])->name('home'); 
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard'); 
@@ -21,12 +21,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/issue-reports', [IssueReportController::class, 'index'])->name('issue_reports.index');
     Route::get('/issue-reports/create', [IssueReportController::class, 'create'])->name('issue_reports.create');
     Route::post('/issue-reports', [IssueReportController::class, 'store'])->name('issue_reports.store');
     Route::put('/issue-reports/{report}', [IssueReportController::class, 'update'])->name('issue_reports.update');
     Route::delete('/issue-reports/{issueReport}', [IssueReportController::class, 'destroy'])->name('issue_reports.destroy');
 });
+
+Route::get('/issue-reports', [IssueReportController::class, 'index'])->name('issue_reports.index');
 
 Route::get('/map', [IssueReportController::class, 'map'])->name('issue_reports.map');
 

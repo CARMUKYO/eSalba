@@ -19,6 +19,23 @@
         .nav-link {
             transition: font-size 0.3s ease, color 0.3s ease;
         }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+        footer a {
+            color: #A0DB43;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body class="custom-bg"> 
@@ -64,8 +81,16 @@
     </div>
 </nav>
 
-    <div class="container">
-        @yield('content')
-    </div>
+<div class="container">
+    @yield('content')
+</div>
+
+@if (isset($showFooter) && $showFooter)
+    <footer>
+        <p>Contact us on:</p>
+        <a href="https://gmail.com" target="_blank" aria-label="Visit our Twitter page">Gmail</a>
+        <p>&copy; {{ date('Y') }} Esalba Environmental Tracker. All rights reserved.</p>
+    </footer>
+@endif
 </body>
 </html>

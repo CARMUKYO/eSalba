@@ -56,6 +56,5 @@ The system architecture will consist of the following components:
 - [✔] Issue reporting with descriptions, photos, and geolocation tagging.
 - [✔] Interactive map visualization of environmental issues.
 - [ ] Commenting system for community discussions.
-- [ ] Basic notifications for new reports and comments.
 
 
