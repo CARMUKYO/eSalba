@@ -8,10 +8,6 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard'); 
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/reports', function () {
     return view('issueReports/reports'); 
 })->name('report-issue'); 

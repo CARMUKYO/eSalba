@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\IssueReport;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
 
 class IssueReportController extends Controller
 {
@@ -21,8 +22,6 @@ class IssueReportController extends Controller
 
     public function store(Request $request)
     {
-        Log::info('Request Data:', $request->all()); 
-
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -31,33 +30,33 @@ class IssueReportController extends Controller
             'longitude' => 'required|numeric',
         ]);
 
-        $photoPath = null;
-        if ($request->hasFile('photo')) {
-            Log::info('Photo upload detected.');
-            $photoPath = $request->file('photo')->store('issue_photos', 'public');
-            Log::info('Photo stored at:', ['path' => $photoPath]);
-        } else {
-            Log::info('No photo uploaded.');
+        $locationName = null;
+        $response = Http::get('https://nominatim.openstreetmap.org/reverse', [
+            'lat' => $request->latitude,
+            'lon' => $request->longitude,
+            'format' => 'json',
+        ]);
+
+        if ($response->successful() && isset($response->json()['display_name'])) {
+            $locationName = $response->json()['display_name'];
         }
 
-        try {
-            $issue = IssueReport::create([
-                'user_id' => auth()->id(),
-                'title' => $request->title,
-                'description' => $request->description,
-                'photo_path' => $photoPath,
-                'latitude' => $request->latitude,
-                'longitude' => $request->longitude,
-            ]);
+        $photoPath = $request->hasFile('photo') ? $request->file('photo')->store('issue_photos', 'public') : null;
 
-            Log::info('Issue report saved successfully.', ['issue_id' => $issue->id]);
-        } catch (\Exception $e) {
-            Log::error('Error saving issue report:', ['error' => $e->getMessage()]);
-            return redirect()->back()->withErrors('An error occurred while saving the report. Please try again.');
-        }
+        // Create the issue report
+        IssueReport::create([
+            'user_id' => auth()->id(),
+            'title' => $request->title,
+            'description' => $request->description,
+            'photo_path' => $photoPath,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'location_name' => $locationName,
+        ]);
 
         return redirect()->route('issue_reports.index')->with('success', 'Issue report submitted successfully.');
     }
+
 
     public function map()
     {

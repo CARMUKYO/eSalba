@@ -14,8 +14,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/';
-
+    protected const HOME = '/';
+    
     public function boot(): void
     {
         $this->routes(function () {
