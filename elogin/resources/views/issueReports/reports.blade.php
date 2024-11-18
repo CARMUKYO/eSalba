@@ -56,13 +56,11 @@
     </form>
 </div>
 
-<!-- Map functionality -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
     
     const map = L.map('map').setView([13.6210, 123.2008], 10);
 
-    // Add tile layer for the map
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: '© OpenStreetMap contributors'
@@ -74,11 +72,8 @@
     map.on('click', function(e) {
         const { lat, lng } = e.latlng;
         
-        // Update form fields with selected coordinates
         document.getElementById('latitude').value = lat;
         document.getElementById('longitude').value = lng;
-
-        // Add or update marker on map
         if (marker) {
             marker.setLatLng(e.latlng);
         } else {
@@ -86,7 +81,6 @@
         }
     });
 
-    // Get user's current location and set map view there
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
             const { latitude, longitude } = position.coords;
