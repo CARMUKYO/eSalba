@@ -16,6 +16,9 @@
             font-size: 1.2rem;
             text-transform: uppercase; 
         }
+        nav{
+            background-color: #306844;
+        }
         .nav-link {
             transition: font-size 0.3s ease, color 0.3s ease;
         }

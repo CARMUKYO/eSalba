@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body{
-            background-color: #A0DB43;
+            background-color: #E4E4FF;
         }
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/hero-bg.jpg');
@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    <div class="hero mt-4">
+    <div class="hero mt-5">
         <h1 class="display-4">Protect Our Planet</h1>
         <p class="lead">Track, report, and resolve environmental issues in your community.</p>
         <a href="{{ route('report-issue') }}" class="btn btn-dark btn-lg">Report an issue?</a>

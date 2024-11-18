@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         body {
-            background-color: #A0DB43;
+            background-color: #E4E4FF;
         }
         #map {
             height: 750px;
