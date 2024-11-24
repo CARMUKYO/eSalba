@@ -48,8 +48,7 @@
                         <td>{{ $report->description }}</td>
                         <td>{{ $report->user->name }}</td>
                         <td>
-                            Latitude: {{ $report->latitude }}<br>
-                            Longitude: {{ $report->longitude }}
+                            <a href="{{ route('map.view', ['lat' => $report->latitude, 'lng' => $report->longitude, 'zoom' => 18]) }}" target="_blank">View on Map</a>
                         </td>
                         <td>{{ $report->status }}</td>
                         <td>

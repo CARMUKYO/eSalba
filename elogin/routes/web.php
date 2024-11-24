@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IssueReportController;
-
+use App\Http\Controllers\MapController;
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -25,7 +25,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/issue-reports', [IssueReportController::class, 'index'])->name('issue_reports.index');
 
-Route::get('/map', [IssueReportController::class, 'map'])->name('issue_reports.map');
+Route::get('/issue-reports/map', [IssueReportController::class, 'map'])->name('issue_reports.map');
+
+Route::get('/map', [App\Http\Controllers\MapController::class, 'index'])->name('map.view');
+
+
 
 // Include the authentication routes
 require __DIR__.'/auth.php';

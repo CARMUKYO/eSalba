@@ -27,29 +27,33 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 <script>
-    const map = L.map('map').setView([13.6210, 123.2008], 10);
+    const lat = {{ $latitude }};
+    const lng = {{ $longitude }};
+    const zoom = {{ $zoom }};
+    const issueReports = @json($issueReports);
 
-    // Set up the tile layer
+    const map = L.map('map').setView([lat, lng], zoom);
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    const issueReports = @json($issueReports ?? []);
 
-    // Add markers for each issue report
+    // Add markers for all issue reports
     issueReports.forEach(issue => {
         if (issue.latitude && issue.longitude) {
-            const marker = L.marker([issue.latitude, issue.longitude]).addTo(map);
-
+            const issueMarker = L.marker([issue.latitude, issue.longitude]).addTo(map);
             let popupContent = `<h5>${issue.title}</h5><p>${issue.description}</p>`;
             if (issue.photo_path) {
                 popupContent += `<img src="/storage/${issue.photo_path}" alt="Issue photo" style="width:100%; height:auto;">`;
             }
-
-            marker.bindPopup(popupContent);
+            issueMarker.bindPopup(popupContent);
         }
     });
 </script>
+
+
+
 </body>
 @endsection
