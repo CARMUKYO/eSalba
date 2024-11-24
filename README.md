@@ -27,7 +27,6 @@ The **Community Environmental Monitoring Web App** will have the following funct
 - Issue reporting with descriptions, photos, and geolocation.
 - Interactive map visualization of reported issues.
 - Commenting system for community interaction.
-- Basic notifications for new reports and comments.
 
 ### Excluded:
 - Integration with IoT devices and sensors for real-time data collection.
@@ -56,5 +55,30 @@ The system architecture will consist of the following components:
 - [✔] Issue reporting with descriptions, photos, and geolocation tagging.
 - [✔] Interactive map visualization of environmental issues.
 - [ ] Commenting system for community discussions.
+
+
+sudo apt install php libapache2-mod-php php-cli php-cgi php-mysql php-pgsql php-sqlite3
+
+sudo systemctl restart apache2.service 
+
+sudo apt install install php-cli php-json php-xml php-mbstring php-zip php-pdo php-tokenizer php-mysqlnd php-bcmath php-curl
+
+sudo apt install composer nodejs npm 
+echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc 
+git clone https://github.com/CARMUKYO/eSalba.git
+
+cd esalba/elogin
+composer update
+composer install
+npm install
+npm run build
+
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
+
+
 
 
