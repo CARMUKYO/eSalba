@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Esalba') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
@@ -42,7 +43,7 @@
     </style>
 </head>
 <body class="custom-bg"> 
-<nav class="navbar navbar-expand-lg"> 
+<nav class="navbar navbar-dark navbar-expand-lg"> 
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="padding: 12px 20px; font-size: 20px;">
             <span class="navbar-toggler-icon"></span>

@@ -12,7 +12,7 @@ class MapController extends Controller
     // Get latitude, longitude, and zoom level from query parameters
     $latitude = $request->query('lat', 13.6210); // Default latitude
     $longitude = $request->query('lng', 123.2008); // Default longitude
-    $zoom = $request->query('zoom', 15); // Default zoom level
+    $zoom = $request->query('zoom', 11); // Default zoom level
 
     // Fetch all issue reports to display their markers
     $issueReports = IssueReport::select('id', 'title', 'description', 'latitude', 'longitude', 'photo_path')->get();
