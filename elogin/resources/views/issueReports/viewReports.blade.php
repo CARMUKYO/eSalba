@@ -165,7 +165,6 @@
     </div>
 </div>
 
-<!-- Image Modal -->
 <div id="imageModal" class="image-modal">
     <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
     <img class="image-modal-content" id="modalImage">

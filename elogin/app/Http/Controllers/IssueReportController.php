@@ -16,7 +16,7 @@ class IssueReportController extends Controller
 
     public function index()
     {
-        $issueReports = IssueReport::all(); 
+        $issueReports = IssueReport::all();
         return view('issueReports.viewReports', compact('issueReports'));
     }
 
@@ -43,7 +43,6 @@ class IssueReportController extends Controller
 
         $photoPath = $request->hasFile('photo') ? $request->file('photo')->store('issue_photos', 'public') : null;
 
-        // Create the issue report
         IssueReport::create([
             'user_id' => auth()->id(),
             'title' => $request->title,
@@ -57,11 +56,10 @@ class IssueReportController extends Controller
         return redirect()->route('issue_reports.index')->with('success', 'Issue report submitted successfully.');
     }
 
-
     public function map()
     {
         $issueReports = IssueReport::select('id', 'title', 'description', 'latitude', 'longitude', 'photo_path')
-            ->get(); 
+            ->get();
         return view('issueReports.map', compact('issueReports'));
     }
 
@@ -83,7 +81,7 @@ class IssueReportController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'status' => 'required|string',
+            'status' => 'required|string|in:Pending,In Progress,Resolved',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -99,6 +97,9 @@ class IssueReportController extends Controller
             'photo_path' => $photoPath,
         ]);
 
+        $report->timestamps = false;
+        $report->save();
+
         return redirect()->route('issue_reports.index')->with('success', 'Issue report updated successfully.');
     }
 
@@ -112,4 +113,4 @@ class IssueReportController extends Controller
 
         return redirect()->route('issue_reports.index')->with('success', 'Report deleted successfully.');
     }
-    }
+}
