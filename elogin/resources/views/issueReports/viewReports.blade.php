@@ -113,9 +113,47 @@
                         </td>
                     </tr>
 
-                    <!-- Edit Modal (remains unchanged) -->
+                    <!-- Edit -->
                     <div class="modal fade" id="editModal-{{ $report->id }}" tabindex="-1" aria-labelledby="editModalLabel-{{ $report->id }}" aria-hidden="true">
-                        <!-- ... (previous edit modal code remains the same) ... -->
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel-{{ $report->id }}">Edit Report</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('issue_reports.update', $report->id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="mb-3">
+                                            <label for="title-{{ $report->id }}" class="form-label">Title</label>
+                                            <input type="text" class="form-control" id="title-{{ $report->id }}" name="title" value="{{ $report->title }}" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="description-{{ $report->id }}" class="form-label">Description</label>
+                                            <textarea class="form-control" id="description-{{ $report->id }}" name="description" rows="4" required>{{ $report->description }}</textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="status-{{ $report->id }}" class="form-label">Status</label>
+                                            <select class="form-select" id="status-{{ $report->id }}" name="status" required>
+                                                <option value="Pending" {{ $report->status === 'Pending' ? 'selected' : '' }}>Pending</option>
+                                                <option value="In Progress" {{ $report->status === 'In Progress' ? 'selected' : '' }}>In Progress</option>
+                                                <option value="Resolved" {{ $report->status === 'Resolved' ? 'selected' : '' }}>Resolved</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="photo-{{ $report->id }}" class="form-label">Photo (optional)</label>
+                                            <input type="file" class="form-control" id="photo-{{ $report->id }}" name="photo" accept="image/*">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 @empty
                     <tr>
